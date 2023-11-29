@@ -40,6 +40,13 @@
             this.sepiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subtractionModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.basicCopyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.greyscaleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorInversionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sepiaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -150,10 +157,67 @@
             // 
             // cameraModeToolStripMenuItem
             // 
+            this.cameraModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.turnOnToolStripMenuItem,
+            this.turnOffToolStripMenuItem,
+            this.basicCopyToolStripMenuItem1,
+            this.greyscaleToolStripMenuItem1,
+            this.colorInversionToolStripMenuItem1,
+            this.histogramToolStripMenuItem1,
+            this.sepiaToolStripMenuItem1});
             this.cameraModeToolStripMenuItem.Name = "cameraModeToolStripMenuItem";
             this.cameraModeToolStripMenuItem.Size = new System.Drawing.Size(140, 29);
             this.cameraModeToolStripMenuItem.Text = "Camera Mode";
             this.cameraModeToolStripMenuItem.Click += new System.EventHandler(this.cameraModeToolStripMenuItem_Click);
+            // 
+            // turnOnToolStripMenuItem
+            // 
+            this.turnOnToolStripMenuItem.Name = "turnOnToolStripMenuItem";
+            this.turnOnToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.turnOnToolStripMenuItem.Text = "Turn On";
+            this.turnOnToolStripMenuItem.Click += new System.EventHandler(this.turnOnToolStripMenuItem_Click);
+            // 
+            // turnOffToolStripMenuItem
+            // 
+            this.turnOffToolStripMenuItem.Name = "turnOffToolStripMenuItem";
+            this.turnOffToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.turnOffToolStripMenuItem.Text = "Turn Off";
+            this.turnOffToolStripMenuItem.Click += new System.EventHandler(this.turnOffToolStripMenuItem_Click);
+            // 
+            // basicCopyToolStripMenuItem1
+            // 
+            this.basicCopyToolStripMenuItem1.Name = "basicCopyToolStripMenuItem1";
+            this.basicCopyToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.basicCopyToolStripMenuItem1.Text = "Basic Copy";
+            this.basicCopyToolStripMenuItem1.Click += new System.EventHandler(this.basicCopyToolStripMenuItem1_Click);
+            // 
+            // greyscaleToolStripMenuItem1
+            // 
+            this.greyscaleToolStripMenuItem1.Name = "greyscaleToolStripMenuItem1";
+            this.greyscaleToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.greyscaleToolStripMenuItem1.Text = "Greyscale";
+            this.greyscaleToolStripMenuItem1.Click += new System.EventHandler(this.greyscaleToolStripMenuItem1_Click);
+            // 
+            // colorInversionToolStripMenuItem1
+            // 
+            this.colorInversionToolStripMenuItem1.Name = "colorInversionToolStripMenuItem1";
+            this.colorInversionToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.colorInversionToolStripMenuItem1.Text = "Color Inversion";
+            this.colorInversionToolStripMenuItem1.Click += new System.EventHandler(this.colorInversionToolStripMenuItem1_Click);
+            // 
+            // histogramToolStripMenuItem1
+            // 
+            this.histogramToolStripMenuItem1.Name = "histogramToolStripMenuItem1";
+            this.histogramToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.histogramToolStripMenuItem1.Text = "Histogram";
+            this.histogramToolStripMenuItem1.Click += new System.EventHandler(this.histogramToolStripMenuItem1_Click);
+            // 
+            // sepiaToolStripMenuItem1
+            // 
+            this.sepiaToolStripMenuItem1.Name = "sepiaToolStripMenuItem1";
+            this.sepiaToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.sepiaToolStripMenuItem1.Text = "Sepia";
+            this.sepiaToolStripMenuItem1.Click += new System.EventHandler(this.sepiaToolStripMenuItem1_Click);
             // 
             // pictureBox1
             // 
@@ -265,6 +329,13 @@
         private System.Windows.Forms.Button btnLoadImage;
         private System.Windows.Forms.Button btnLoadBg;
         private System.Windows.Forms.Button btnSubtract;
+        private System.Windows.Forms.ToolStripMenuItem basicCopyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem greyscaleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem colorInversionToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sepiaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem turnOnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnOffToolStripMenuItem;
     }
 }
 

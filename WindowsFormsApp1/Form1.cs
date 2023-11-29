@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HNUDIP;
 
 namespace WindowsFormsApp1
 {
@@ -16,8 +17,10 @@ namespace WindowsFormsApp1
         Bitmap processed;
         Bitmap subResult;
         bool subMode;
-        bool camMode;
+        int camType;
         private Device webcam;
+        Timer camTimer;
+        Device[] devices;
 
         public Vallecera_Image_Processing()
         {
@@ -26,7 +29,10 @@ namespace WindowsFormsApp1
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             subtractMode(false);
-            camMode = false;
+            camTimer = new Timer();
+            camTimer.Interval = 34;
+            camTimer.Tick += new EventHandler(camTimer_Tick);
+
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -243,18 +249,81 @@ namespace WindowsFormsApp1
 
         private void cameraModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            camMode = !camMode;
-            Device[] devices = DeviceManager.GetAllDevices();
+            
+        }
 
-            if (devices.Length > 0 && camMode)
+        private void camTimer_Tick(object sender, EventArgs e)
+        {
+            IDataObject data;
+            Image bmap;
+            devices[0].Sendmessage();
+            data = Clipboard.GetDataObject();
+            bmap = (Image)(data.GetData("System.Drawing.Bitmap", true));
+            loaded = new Bitmap(bmap);
+            processed = new Bitmap(loaded.Width,loaded.Height);
+            switch(camType)
+            {
+                case 0:
+                    ImageProcess.copyImage(ref loaded, ref processed);
+                    break;
+                case 1:
+                    ImageProcess.greyScale(ref loaded, ref processed);
+                    break;
+                case 2:
+                    ImageProcess.colorInversion(ref loaded, ref processed);
+                    break;
+                case 3:
+                    ImageProcess.Histogram(ref loaded, ref processed);
+                    break;
+                case 4:
+                    ImageProcess.sepia(ref loaded, ref processed);
+                    break;
+            }
+            pictureBox2.Image = processed;
+        }
+
+        private void basicCopyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            camType = 0;
+        }
+
+        private void turnOnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            devices = DeviceManager.GetAllDevices();
+            if (devices.Length > 0)
             {
                 webcam = devices[0]; // Assuming you want to use the first detected device
                 webcam.ShowWindow(pictureBox1);
             }
-            else
-            {
-                webcam.Stop();
-            }
+            camTimer.Start();
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void turnOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            webcam.Stop();
+            camTimer.Stop();
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+        }
+
+        private void greyscaleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            camType = 1;
+        }
+
+        private void colorInversionToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            camType = 2;
+        }
+
+        private void histogramToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            camType = 3;
+        }
+
+        private void sepiaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            camType = 4;
         }
     }
 }
